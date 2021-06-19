@@ -30,10 +30,10 @@ func main() {
 	}
 
 	for _, url := range urls {
-		go hitURL(url, c)
+		go hitURL(url, c) // 고루틴 실행
 	}
 
-	for i := 0; i < len(urls); i++ {
+	for i := 0; i < len(urls); i++ { // 채널에 쌓인 개수만큼 반복
 		result := <-c
 		results[result.url] = result.status
 	}
